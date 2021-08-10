@@ -1,0 +1,17 @@
+{
+  "name": "configurator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild ./index.js --bundle --minify --platform=node --outfile=./build/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.12.19",
+    "jest": "^27.0.6"
+  }
+}
