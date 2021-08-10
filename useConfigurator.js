@@ -3,11 +3,11 @@ const configurator = require('./index.js');
 const CONFIG_FILE = './config.js';
 
 const mainConfig = configurator.expect
-  .config({ configFile: { arg: 'config', default: CONFIG_FILE } })
+  .jsFile({ configFile: { arg: 'config', default: CONFIG_FILE } })
   .string({
     moduleName: {
       arg: 'module',
-      do: (name) => name.toLowerCase(),
+      do: (value) => value.toLowerCase(),
     },
   })
   .string('name', 'otherName')

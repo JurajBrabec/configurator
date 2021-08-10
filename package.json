@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild ./index.js --bundle --minify --platform=node --outfile=./build/index.js",
+    "build": "esbuild ./index.js --bundle --minify --platform=node --outfile=./build/configurator.js",
     "test": "jest"
   },
   "keywords": [],

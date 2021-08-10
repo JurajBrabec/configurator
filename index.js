@@ -4,7 +4,7 @@ const { statSync } = require('fs');
 module.exports.Type = {
   Array: 'arr',
   Bool: 'bool',
-  Config: 'conf',
+  jsFile: 'js',
   File: 'file',
   Num: 'num',
   Path: 'path',
@@ -77,13 +77,13 @@ const castValue = (text, variable) => {
   return value;
 };
 
-const importConfig = (fileName) => {
-  const fileConfig = require(path.resolve(fileName));
-  configuration = { ...configuration, ...fileConfig };
+const importJsFile = (fileName) => {
+  const jsFile = require(path.resolve(fileName));
+  configuration = { ...configuration, ...jsFile };
   return configuration;
 };
 
-const parseVariable = (variable) => {
+const compileVariable = (variable) => {
   let value;
   try {
     value = argValue(variable) || defaultValue(variable);
@@ -104,11 +104,11 @@ const parseVariable = (variable) => {
 module.exports.compile = (setup = variables) => {
   try {
     setup
-      .filter((variable) => variable.type === exports.Type.Config)
-      .map((variable) => importConfig(parseVariable(variable)));
+      .filter((variable) => variable.type === exports.Type.jsFile)
+      .map((variable) => importJsFile(compileVariable(variable)));
     setup
-      .filter((variable) => variable.type !== exports.Type.Config)
-      .map((variable) => parseVariable(variable));
+      .filter((variable) => variable.type !== exports.Type.jsFile)
+      .map((variable) => compileVariable(variable));
     return configuration;
   } catch (error) {
     throw new Error(`Error: ${error.message}`);
@@ -141,7 +141,7 @@ module.exports.expect = {
   },
   array: (...params) => addAll(exports.Type.Array, params),
   bool: (...params) => addAll(exports.Type.Bool, params),
-  config: (...params) => addAll(exports.Type.Config, params),
+  jsFile: (...params) => addAll(exports.Type.jsFile, params),
   file: (...params) => addAll(exports.Type.File, params),
   num: (...params) => addAll(exports.Type.Num, params),
   path: (...params) => addAll(exports.Type.Path, params),
