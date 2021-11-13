@@ -1,4 +1,4 @@
-const configurator = require('./index.js');
+const configurator = require('./src/index.js');
 
 const CONFIG_FILE = './config.js';
 
