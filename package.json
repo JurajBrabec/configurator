@@ -1,6 +1,6 @@
 {
   "name": "configurator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./src/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.13.12",
+    "esbuild": "^0.14.23",
     "jest": "^27.0.6"
   }
 }
